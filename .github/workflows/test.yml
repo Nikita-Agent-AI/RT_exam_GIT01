@@ -1,0 +1,39 @@
+name: RT_exam_action
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+ job1:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Print hello
+    run: echo "hello msg"
+     -name: Print Ubuntu version
+     run: lsb_release -a
+      -name: print last commit hash
+         run: git rev-parse HEAD   
+
+
+ job2:
+   runs-on: ubuntu-lates
+   steps:
+     -name: checkout repo
+      uses: actions/checkout@v3
+      -name: Print all files from repo
+      run: cat 1.txt 2.txt
+
+
+ job3:
+   runs-on: ubuntu-latest
+   env:
+    FIRST_NAME: Nikita
+    LAST_NAME: Agent
+   steps:
+    -name: Print First Name
+    -run: echo "First Name is $FIRST_NAME"
+     -name: Print Last Name
+       -run: echo "Last Name is $LAST_NAME"
+     -name: Print phone number
+       run: echo "${{ secrets.PHONE_NUMBER}}"
